@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "185266191563",
+    "project_id": "ebuschoolapp",
+    "storage_bucket": "ebuschoolapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185266191563:android:d6445a5af75d1d90d6af4e",
+        "android_client_info": {
+          "package_name": "com.example.ebuschoolapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185266191563-m9mvjmfn2vbvtscfju00grs0om605cf1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ-z1u2TMsHKC7-E62hRn9nyFLbm3WhLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185266191563-m9mvjmfn2vbvtscfju00grs0om605cf1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
