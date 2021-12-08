@@ -249,8 +249,8 @@ public class StudentInfo extends AppCompatActivity implements NavigationView.OnN
                 break;
 
             case R.id.nav_user_profile:
-                Intent studentInfo = new Intent(StudentInfo.this,StudentInfo.class);
-                startActivity(new Intent(getApplicationContext(), StudentInfo.class));
+                Intent studentInfo = new Intent(StudentInfo.this,StudentProfile.class);
+                startActivity(new Intent(getApplicationContext(), StudentProfile.class));
                 finish();
                 break;
 

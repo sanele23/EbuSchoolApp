@@ -47,28 +47,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // User Profile Click Activity from Home page to Student Info Activity
 
-        //ImageView StudentInfo = findViewById(R.id.profile_img);
+        ImageView StudentProfile = findViewById(R.id.profile_img);
 
-      //  StudentInfo.setOnClickListener(new View.OnClickListener() {
-          //  @Override
-         //   public void onClick(View v) {
-              //  startActivity(new Intent(getApplicationContext(), StudentInfo.class));
-             //   finish();
-           // }
-       // });
+       StudentProfile.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+              startActivity(new Intent(getApplicationContext(), StudentProfile.class));
+               finish();
+            }
+       });
 
         // Student Profile Click Activity from Home page to StudentProfile (
         // Only for test is using the courses icon then I will change it to the profile Icon when administrators profile are ready)
 
-    //    ImageView StudentProfile = findViewById(R.id.course_main_img);
+      ImageView StudentInfo= findViewById(R.id.course_main_img);
 
-    //    StudentProfile.setOnClickListener(new View.OnClickListener() {
-      //      @Override
-      //      public void onClick(View v) {
-      //          startActivity(new Intent(getApplicationContext(), StudentProfile.class));
-     //           finish();
-     //       }
-    //    });
+      StudentInfo.setOnClickListener(new View.OnClickListener() {
+          @Override
+       public void onClick(View v)
+          { startActivity(new Intent(getApplicationContext(), StudentInfo.class));
+          finish();
+           }
+       });
 
         // Calendar click activity from Home Page to Calendar
 
@@ -139,11 +139,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 break;
 
-          //  case R.id.nav_user_profile:
-                //Intent studentInfo = new Intent (MainActivity.this,StudentInfo.class);
-               // startActivity(new Intent(getApplicationContext(), StudentInfo.class));
-               // finish();
-               // break;
+           case R.id.nav_user_profile:
+                Intent studentInfo = new Intent (MainActivity.this,StudentProfile.class);
+                startActivity(new Intent(getApplicationContext(), StudentProfile.class));
+                finish();
+                break;
 
             //case R.id.nav_calendar:
              //   Intent studentInformation = new Intent (MainActivity.this,Calendar.class);

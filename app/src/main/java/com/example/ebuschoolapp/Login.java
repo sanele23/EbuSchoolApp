@@ -198,11 +198,11 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
                 finish();
                 break;
 
-            //  case R.id.nav_user_profile:
-            //Intent studentInfo = new Intent (MainActivity.this,StudentInfo.class);
-            // startActivity(new Intent(getApplicationContext(), StudentInfo.class));
-            // finish();
-            // break;
+             case R.id.nav_user_profile:
+            Intent studentInfo = new Intent (Login.this,StudentProfile.class);
+            startActivity(new Intent(getApplicationContext(), StudentProfile.class));
+            finish();
+            break;
 
             //case R.id.nav_calendar:
             //   Intent studentInformation = new Intent (MainActivity.this,Calendar.class);
