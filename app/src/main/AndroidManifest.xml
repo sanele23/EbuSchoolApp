@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EbuSchoolApp">
         <activity
+            android:name=".StudentInfo"
+            android:exported="true" />
+        <activity
+            android:name=".StudentProfile"
+            android:exported="true" />
+        <activity
+            android:name=".ResetPassword"
+            android:exported="true" />
+        <activity
             android:name=".Admin"
             android:exported="false" />
         <activity

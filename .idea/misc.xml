@@ -3,6 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.24074074074074073" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/drawable/custom_input.xml" value="0.25462962962962965" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/drawable/user_profile_icon.xml" value="0.24074074074074073" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/layout/activity_admin.xml" value="0.17300724637681159" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/layout/activity_login.xml" value="0.176" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/layout/activity_main.xml" value="0.136" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/layout/activity_reset_password.xml" value="0.12708333333333333" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/layout/activity_student_info.xml" value="0.264" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/layout/activity_student_information.xml" value="0.1793478260869565" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/layout/activity_student_profile.xml" value="0.24547101449275363" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/layout/header.xml" value="0.17300724637681159" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/menu/menu.xml" value="0.25" />
+        <entry key="..\:/Documents/BYU/CS 246/EbuSchoolApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/Sanele/AndroidStudioProjects/EbuSchoolApp/app/src/main/res/layout/activity_admin.xml" value="0.20416666666666666" />
       </map>
     </option>

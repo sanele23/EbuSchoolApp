@@ -1,19 +1,26 @@
 package com.example.ebuschoolapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +31,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Register extends AppCompatActivity {
+public class Register extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     EditText fullName,email,password,phone;
     Button registerBtn,goToLogin;
     CheckBox isTeacherBox, isStudentBox;
@@ -33,10 +40,20 @@ public class Register extends AppCompatActivity {
     FirebaseAuth fAuth; // firebase authentication
     FirebaseFirestore fStore; // to store data on firestone
 
+
+    //Variable for the menu to show inside the login activity- Michelle
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
+    TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        // Change Status Bar Color-Michelle
+        getWindow().setStatusBarColor(ContextCompat.getColor(Register.this,R.color.background_header_color));
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -153,6 +170,24 @@ public class Register extends AppCompatActivity {
             }
         });
 
+       //Hooks for the menu - Michelle
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        textView = findViewById(R.id.textView);
+        toolbar = findViewById(R.id.toolbar);
+
+        //ToolBar
+
+
+        //Navigation Drawer Menu-Michelle
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     public boolean checkField(EditText textField){
@@ -164,5 +199,27 @@ public class Register extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    //Navigation item Menu selected - Michelle
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        switch (menuItem.getItemId()) {
+            case R.id.nav_home:
+                Intent home = new Intent(Register.this, MainActivity.class);
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+                break;
+
+            case R.id.nav_login:
+                Intent login = new Intent(Register.this, Login.class);
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                finish();
+
+
+        }
+
+        return true;
     }
 }

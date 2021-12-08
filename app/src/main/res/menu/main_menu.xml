@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:title="Home"
+            android:icon="@drawable/home">
+
+        </item>
+
+        <item
+            android:id="@+id/nav_login"
+            android:title="Login"
+            android:icon="@drawable/user_login">
+
+        </item>
+        <item
+            android:id="@+id/nav_user_profile"
+            android:title="User Profile"
+            android:icon="@drawable/user_profile_icon">
+
+        </item>
+        <item
+            android:id="@+id/nav_calendar"
+            android:title="Calendar"
+            android:icon="@drawable/calendar">
+
+        </item>
+        <item
+            android:id="@+id/resetUserPassword"
+            android:title="Reset Password" />
+    </group>
+
+
+</menu>

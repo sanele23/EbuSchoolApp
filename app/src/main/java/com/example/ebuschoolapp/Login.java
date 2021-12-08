@@ -1,37 +1,53 @@
 package com.example.ebuschoolapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Login extends AppCompatActivity {
-    EditText email,password;
-    Button loginBtn,gotoRegister;
+public class Login extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    EditText email, password;
+    Button loginBtn, gotoRegister;
     boolean valid = true;
 
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
+
+    //Variable for the menu to show inside the login activity- Michelle
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
+    TextView textView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // Change Status Bar Color-Michelle
+        getWindow().setStatusBarColor(ContextCompat.getColor(Login.this, R.color.background_header_color));
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -79,6 +95,24 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        //Hooks for the menu - Michelle
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        textView = findViewById(R.id.textView);
+        toolbar = findViewById(R.id.toolbar);
+
+        //ToolBar
+
+
+        //Navigation Drawer Menu-Michelle
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     // check user access level
@@ -105,11 +139,11 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    public boolean checkField(EditText textField){
-        if(textField.getText().toString().isEmpty()){
+    public boolean checkField(EditText textField) {
+        if (textField.getText().toString().isEmpty()) {
             textField.setError("Error");
             valid = false;
-        }else {
+        } else {
             valid = true;
         }
 
@@ -146,5 +180,38 @@ public class Login extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        switch (menuItem.getItemId()) {
+            case R.id.nav_home:
+                Intent home = new Intent(Login.this, MainActivity.class);
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+                break;
+
+            case R.id.nav_login:
+                Intent login = new Intent(Login.this, Login.class);
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                finish();
+                break;
+
+            //  case R.id.nav_user_profile:
+            //Intent studentInfo = new Intent (MainActivity.this,StudentInfo.class);
+            // startActivity(new Intent(getApplicationContext(), StudentInfo.class));
+            // finish();
+            // break;
+
+            //case R.id.nav_calendar:
+            //   Intent studentInformation = new Intent (MainActivity.this,Calendar.class);
+            // startActivity(new Intent(getApplicationContext(), Calendar.class));
+            //  finish();
+            //   break;
+
+
+        }
+        return true;
     }
 }
