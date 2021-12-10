@@ -10,6 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EbuSchoolApp">
         <activity
+            android:name=".Admin"
+            android:exported="true" />
+
+        <activity
+            android:name=".Calendar"
+            android:exported="true" />
+        <activity
+            android:name=".Event"
+            android:exported="true" />
+
+        <activity
             android:name=".ShowActivity"
             android:exported="false" />
         <activity
