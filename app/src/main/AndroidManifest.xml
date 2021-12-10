@@ -10,12 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EbuSchoolApp">
         <activity
-            android:name=".Event"
-            android:exported="true" />
+            android:name=".ShowActivity"
+            android:exported="false" />
         <activity
-            android:name=".Calendar"
-            android:exported="true" />
-
+            android:name=".GradingActivity"
+            android:exported="false" />
         <activity
             android:name=".StudentProfile"
             android:exported="true" />
