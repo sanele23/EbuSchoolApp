@@ -10,10 +10,35 @@
         <item name="colorSecondaryVariant">#F57C00</item>
         <item name="colorOnSecondary">@color/black</item>
 
+
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
 
 
     </style>
+
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/background_header_color</item>
+        <item name="colorAccent">@color/background_header_color</item>
+
+    </style>
+
+    <style name="CalenderWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/gray_text_color</item>
+        <item name="android:weekDayTextAppearance">@color/gray_text_color</item>
+        <item name="android:focusedMonthDateColor">@color/gray_text_color</item>
+
+    </style>
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/gray_text_color</item>
+        <item name="android:weekNumberColor">@color/background_header_color</item>
+    </style>
+
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/gray_text_color</item>
+    </style>
+
+
 </resources>

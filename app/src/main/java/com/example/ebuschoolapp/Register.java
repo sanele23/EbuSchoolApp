@@ -31,7 +31,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Register extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Register extends AppCompatActivity  {
     EditText fullName,email,password,phone;
     Button registerBtn,goToLogin;
     CheckBox isTeacherBox, isStudentBox;
@@ -41,11 +41,6 @@ public class Register extends AppCompatActivity implements NavigationView.OnNavi
     FirebaseFirestore fStore; // to store data on firestone
 
 
-    //Variable for the menu to show inside the login activity- Michelle
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    Toolbar toolbar;
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,23 +165,6 @@ public class Register extends AppCompatActivity implements NavigationView.OnNavi
             }
         });
 
-       //Hooks for the menu - Michelle
-
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        textView = findViewById(R.id.textView);
-        toolbar = findViewById(R.id.toolbar);
-
-        //ToolBar
-
-
-        //Navigation Drawer Menu-Michelle
-        navigationView.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
 
     }
 
@@ -201,25 +179,6 @@ public class Register extends AppCompatActivity implements NavigationView.OnNavi
         return valid;
     }
 
-    //Navigation item Menu selected - Michelle
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-        switch (menuItem.getItemId()) {
-            case R.id.nav_home:
-                Intent home = new Intent(Register.this, MainActivity.class);
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                finish();
-                break;
-
-            case R.id.nav_login:
-                Intent login = new Intent(Register.this, Login.class);
-                startActivity(new Intent(getApplicationContext(), Login.class));
-                finish();
 
 
-        }
-
-        return true;
-    }
 }

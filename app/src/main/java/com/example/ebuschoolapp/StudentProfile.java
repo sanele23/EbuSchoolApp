@@ -11,6 +11,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -22,6 +24,8 @@ public class StudentProfile extends AppCompatActivity implements NavigationView.
     NavigationView navigationView;
     Toolbar toolbar;
     TextView textView;
+
+    Button logoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,17 @@ public class StudentProfile extends AppCompatActivity implements NavigationView.
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
 
+
+        //logout Button
+
+        logoutBtn = findViewById(R.id.logoutBtn);
+       logoutBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+          public void onClick(View v) {
+              startActivity(new Intent(getApplicationContext(), Login.class));
+           }
+       });
+
     }
 
     // Make Menu Return
@@ -73,24 +88,38 @@ public class StudentProfile extends AppCompatActivity implements NavigationView.
                 finish();
                 break;
 
-            case R.id.nav_login:
-                Intent login = new Intent(StudentProfile.this,Login.class);
+            case R.id.nav_logout:
+                Intent logout = new Intent(StudentProfile.this,Login.class);
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
                 break;
 
+
             case R.id.nav_user_profile:
-                Intent studentInfo = new Intent (StudentProfile.this,StudentInfo.class);
+                Intent studentProfile = new Intent(StudentProfile.this,StudentProfile.class);
+                startActivity(new Intent(getApplicationContext(), StudentProfile.class));
+                finish();
+                break;
+
+            case R.id.nav_student_info:
+                Intent studentInfo = new Intent(StudentProfile.this,StudentInfo.class);
                 startActivity(new Intent(getApplicationContext(), StudentInfo.class));
                 finish();
                 break;
 
-         //   case R.id.nav_calendar:
-            //    Intent studentInformation = new Intent (StudentProfile.this,CalendarActivity.class);
-             //   startActivity(new Intent(getApplicationContext(), CalendarActivity.class));
-             //   finish();
-              //  break;
+       case R.id.nav_calendar:
+            Intent studentInformation = new Intent (StudentProfile.this,Calendar.class);
+               startActivity(new Intent(getApplicationContext(), Calendar.class));
+             finish();
+              break;
+
+            case R.id.nav_resetUserPassword:
+                Intent reset= new Intent (StudentProfile.this,ResetPassword.class);
+                startActivity(new Intent(getApplicationContext(), ResetPassword.class));
+                finish();
+                break;
+
 
 
         }

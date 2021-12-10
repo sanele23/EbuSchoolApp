@@ -48,13 +48,13 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="0dp"
-            android:layout_height="178dp"
-            android:layout_marginTop="28dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="56dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/school_icon"
+            app:srcCompat="@drawable/student_registration_white_big"
             tools:ignore="MissingConstraints" />
 
 
@@ -68,7 +68,7 @@
             android:layout_marginTop="216dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/custom_input"
-
+            android:drawableStart="@drawable/user_profile_register"
             android:drawablePadding="12dp"
             android:ems="10"
             android:hint="Student ID"
@@ -90,7 +90,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/custom_input"
-
+            android:drawableStart="@drawable/user_profile_register"
             android:drawablePadding="12dp"
             android:ems="10"
             android:hint="Student Full Name"
@@ -112,7 +112,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/custom_input"
-
+            android:drawableStart="@drawable/user_profile_register"
             android:drawablePadding="12dp"
             android:ems="10"
             android:hint="Student Class"
@@ -133,7 +133,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/custom_input"
-
+            android:drawableStart="@drawable/user_profile_register"
             android:drawablePadding="12dp"
             android:ems="10"
             android:hint="Student Grade"

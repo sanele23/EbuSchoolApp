@@ -249,22 +249,35 @@ public class StudentInfo extends AppCompatActivity implements NavigationView.OnN
                 break;
 
             case R.id.nav_user_profile:
-                Intent studentInfo = new Intent(StudentInfo.this,StudentProfile.class);
+                Intent studentProfile = new Intent(StudentInfo.this,StudentProfile.class);
                 startActivity(new Intent(getApplicationContext(), StudentProfile.class));
                 finish();
                 break;
 
-            case R.id.nav_login:
+            case R.id.nav_student_info:
+                Intent studentInfo = new Intent(StudentInfo.this,StudentInfo.class);
+                startActivity(new Intent(getApplicationContext(), StudentInfo.class));
+                finish();
+                break;
+
+            case R.id.nav_logout:
                 Intent login = new Intent(StudentInfo.this,Login.class);
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
                 break;
 
-            //case R.id.nav_calendar:
-              //  Intent studentInformation = new Intent (StudentInfo.this,CalendarActivity.class);
-               // startActivity(new Intent(getApplicationContext(), CalendarActivity.class));
-               // finish();
-               // break;
+            case R.id.nav_calendar:
+                Intent calendar= new Intent (StudentInfo.this,Calendar.class);
+                startActivity(new Intent(getApplicationContext(), Calendar.class));
+                finish();
+                break;
+
+            case R.id.nav_resetUserPassword:
+                Intent reset= new Intent (StudentInfo.this,ResetPassword.class);
+                startActivity(new Intent(getApplicationContext(), ResetPassword.class));
+                finish();
+                break;
+
 
 
         }

@@ -192,8 +192,8 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
                 finish();
                 break;
 
-            case R.id.nav_login:
-                Intent login = new Intent(Login.this, Login.class);
+            case R.id.nav_logout:
+                Intent logout = new Intent(Login.this, Login.class);
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
                 break;
@@ -203,12 +203,17 @@ public class Login extends AppCompatActivity implements NavigationView.OnNavigat
             startActivity(new Intent(getApplicationContext(), StudentProfile.class));
             finish();
             break;
+            case R.id.nav_calendar:
+                Intent calendar= new Intent (Login.this,Calendar.class);
+                startActivity(new Intent(getApplicationContext(), Calendar.class));
+                finish();
+                break;
 
-            //case R.id.nav_calendar:
-            //   Intent studentInformation = new Intent (MainActivity.this,Calendar.class);
-            // startActivity(new Intent(getApplicationContext(), Calendar.class));
-            //  finish();
-            //   break;
+            case R.id.nav_resetUserPassword:
+                Intent reset= new Intent (Login.this,ResetPassword.class);
+                startActivity(new Intent(getApplicationContext(), ResetPassword.class));
+                finish();
+                break;
 
 
         }
