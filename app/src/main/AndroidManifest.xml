@@ -15,9 +15,7 @@
         <activity
             android:name=".Calendar"
             android:exported="true" />
-        <activity
-            android:name=".Caelndar"
-            android:exported="true" />
+
         <activity
             android:name=".StudentProfile"
             android:exported="true" />
