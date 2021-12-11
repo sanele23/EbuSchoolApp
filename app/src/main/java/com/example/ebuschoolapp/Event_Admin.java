@@ -22,7 +22,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Event extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Event_Admin extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     EditText title;
     EditText location;
     EditText description;
@@ -38,10 +38,10 @@ public class Event extends AppCompatActivity implements NavigationView.OnNavigat
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event);
+        setContentView(R.layout.activity_event_admin);
 
         //Change Status Bar Color
-        getWindow().setStatusBarColor(ContextCompat.getColor(Event.this,R.color.background_header_color));
+        getWindow().setStatusBarColor(ContextCompat.getColor(Event_Admin.this,R.color.background_header_color));
 
 
         //Hooks
@@ -50,9 +50,10 @@ public class Event extends AppCompatActivity implements NavigationView.OnNavigat
         navigationView = findViewById(R.id.nav_view);
         textView =findViewById(R.id.textView);
         toolbar = findViewById(R.id.toolbar);
+
         // Hide items
         Menu menu = navigationView.getMenu();
-        menu.findItem(R.id.nav_student_info).setVisible(false);
+        menu.findItem(R.id.nav_user_profile).setVisible(false);
 
 
         title = findViewById(R.id.etTitle);
@@ -76,11 +77,11 @@ public class Event extends AppCompatActivity implements NavigationView.OnNavigat
                     if(intent.resolveActivity(getPackageManager()) != null) {
                         startActivity(intent);
                     } else {
-                        Toast.makeText(Event.this, "There is no app that can support this action",
+                        Toast.makeText(Event_Admin.this, "There is no app that can support this action",
                                 Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(Event.this, "Please fill all the fields",
+                    Toast.makeText(Event_Admin.this, "Please fill all the fields",
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -116,40 +117,34 @@ public class Event extends AppCompatActivity implements NavigationView.OnNavigat
 
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
-                Intent home = new Intent(Event.this, MainActivity.class);
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                Intent home = new Intent(Event_Admin.this, Admin.class);
+                startActivity(new Intent(getApplicationContext(), Admin.class));
                 finish();
                 break;
 
             case R.id.nav_logout:
-                Intent logout = new Intent(Event.this, Login.class);
+                Intent logout = new Intent(Event_Admin.this, Login.class);
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
                 break;
 
 
-            case R.id.nav_user_profile:
-                Intent studentProfile = new Intent(Event.this,MyAdapter.MyViewHolder.class);
-                startActivity(new Intent(getApplicationContext(), MyAdapter.MyViewHolder.class));
-                finish();
-                break;
-
             case R.id.nav_student_info:
-                Intent studentRegistration = new Intent(Event.this,GradingActivity.class);
+                Intent studentRegistration = new Intent(Event_Admin.this,GradingActivity.class);
                 startActivity(new Intent(getApplicationContext(), GradingActivity.class));
                 finish();
                 break;
 
             case R.id.nav_calendar:
-                Intent calendar = new Intent(Event.this, Calendar.class);
-                startActivity(new Intent(getApplicationContext(), Calendar.class));
+                Intent calendar = new Intent(Event_Admin.this, Calendar_Admin.class);
+                startActivity(new Intent(getApplicationContext(), Calendar_Admin.class));
                 finish();
                 break;
 
             case R.id.nav_resetUserPassword:
-                Intent reset = new Intent(Event.this, ResetPassword.class);
-                startActivity(new Intent(getApplicationContext(), ResetPassword.class));
+                Intent reset = new Intent(Event_Admin.this, ResetPassword_Admin.class);
+                startActivity(new Intent(getApplicationContext(), ResetPassword_Admin.class));
                 finish();
                 break;
 

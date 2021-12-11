@@ -18,15 +18,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.ebuschoolapp.MainActivity;
-import com.example.ebuschoolapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class ResetPassword extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ResetPassword_Admin extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     EditText userPassword, userConfPassword;
     Button savePasswordBtn;
     FirebaseUser user;
@@ -41,24 +39,22 @@ public class ResetPassword extends AppCompatActivity implements NavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reset_password);
-
+        setContentView(R.layout.activity_reset_password_admin);
 
 
         //Change Status Bar Color
-        getWindow().setStatusBarColor(ContextCompat.getColor(ResetPassword.this,R.color.background_header_color));
+        getWindow().setStatusBarColor(ContextCompat.getColor(ResetPassword_Admin.this, R.color.background_header_color));
 
 
         //Hooks
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        textView =findViewById(R.id.textView);
+        textView = findViewById(R.id.textView);
         toolbar = findViewById(R.id.toolbar);
-
-    // Hide items
+        // Hide items
         Menu menu = navigationView.getMenu();
-        menu.findItem(R.id.nav_student_info).setVisible(false);
+        menu.findItem(R.id.nav_user_profile).setVisible(false);
 
         // Extract data after user data
         userPassword = findViewById(R.id.newUserPassword);
@@ -73,17 +69,17 @@ public class ResetPassword extends AppCompatActivity implements NavigationView.O
             @Override
             public void onClick(View v) {
                 // error is fields are not filled
-                if(userPassword.getText().toString().isEmpty()) {
+                if (userPassword.getText().toString().isEmpty()) {
                     userPassword.setError("Field is required");
                     return;
                 }
-                if(userConfPassword.getText().toString().isEmpty()) {
+                if (userConfPassword.getText().toString().isEmpty()) {
                     userConfPassword.setError("Field is required");
                     return;
                 }
 
                 // compare fields
-                if(!userPassword.getText().toString().equals(userConfPassword.getText().toString())) {
+                if (!userPassword.getText().toString().equals(userConfPassword.getText().toString())) {
                     userConfPassword.setError("Passwords do not match.");
                     return;
                 }
@@ -92,14 +88,14 @@ public class ResetPassword extends AppCompatActivity implements NavigationView.O
                 user.updatePassword(userPassword.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast.makeText(ResetPassword.this, "Password Updated.", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        Toast.makeText(ResetPassword_Admin.this, "Password Updated.", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), Admin.class));
                         finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ResetPassword.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ResetPassword_Admin.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -110,10 +106,9 @@ public class ResetPassword extends AppCompatActivity implements NavigationView.O
         setSupportActionBar(toolbar);
 
 
-
         //Navigation Drawer Menu
         navigationView.bringToFront();
-        ActionBarDrawerToggle toggle=new  ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -130,7 +125,7 @@ public class ResetPassword extends AppCompatActivity implements NavigationView.O
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-            Intent backtomain = new Intent(ResetPassword.this, MainActivity.class);
+            Intent backtomain = new Intent(ResetPassword_Admin.this, Admin.class);
             startActivity(backtomain);
             finish();
         }
@@ -142,16 +137,14 @@ public class ResetPassword extends AppCompatActivity implements NavigationView.O
 
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
-                Intent home = new Intent(ResetPassword.this, MainActivity.class);
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                Intent home = new Intent(ResetPassword_Admin.this, Admin.class);
+                startActivity(new Intent(getApplicationContext(), Admin.class));
                 finish();
                 break;
 
 
-
-
             case R.id.nav_logout:
-                Intent logout = new Intent(ResetPassword.this, Login.class);
+                Intent logout = new Intent(ResetPassword_Admin.this, Login.class);
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
@@ -159,21 +152,26 @@ public class ResetPassword extends AppCompatActivity implements NavigationView.O
 
 
             case R.id.nav_user_profile:
-                Intent studentProfile = new Intent(ResetPassword.this,MyAdapter.MyViewHolder.class);
+                Intent studentProfile = new Intent(ResetPassword_Admin.this, MyAdapter.MyViewHolder.class);
                 startActivity(new Intent(getApplicationContext(), MyAdapter.MyViewHolder.class));
                 finish();
                 break;
 
+            case R.id.nav_student_info:
+                Intent studentRegistration = new Intent(ResetPassword_Admin.this, GradingActivity.class);
+                startActivity(new Intent(getApplicationContext(), GradingActivity.class));
+                finish();
+                break;
 
             case R.id.nav_calendar:
-                Intent calendar = new Intent(ResetPassword.this, Calendar.class);
-                startActivity(new Intent(getApplicationContext(), Calendar.class));
+                Intent calendar = new Intent(ResetPassword_Admin.this, Calendar_Admin.class);
+                startActivity(new Intent(getApplicationContext(), Calendar_Admin.class));
                 finish();
                 break;
 
             case R.id.nav_resetUserPassword:
-                Intent reset = new Intent(ResetPassword.this, ResetPassword.class);
-                startActivity(new Intent(getApplicationContext(), ResetPassword.class));
+                Intent reset = new Intent(ResetPassword_Admin.this, ResetPassword_Admin.class);
+                startActivity(new Intent(getApplicationContext(), ResetPassword_Admin.class));
                 finish();
                 break;
 
@@ -183,25 +181,5 @@ public class ResetPassword extends AppCompatActivity implements NavigationView.O
         return true;
     }
 
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                finish();
-//                return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-    //}
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // handle arrow click here
-//        if (item.getItemId() == android.R.id.home) {
-//            finish(); // close this activity and return to preview activity (if there is any)
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
 
 }
-

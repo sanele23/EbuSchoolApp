@@ -15,18 +15,23 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Calendar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = "MainActivity";
+   // private static final String TAG = "MainActivity";
 
     private CalendarView mCalendarView;
+
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
 
     // Variables
     DrawerLayout drawerLayout;
@@ -39,7 +44,8 @@ public class Calendar extends AppCompatActivity implements NavigationView.OnNavi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
         //Change Status Bar Color
         getWindow().setStatusBarColor(ContextCompat.getColor(Calendar.this, R.color.background_header_color));
 
@@ -50,6 +56,9 @@ public class Calendar extends AppCompatActivity implements NavigationView.OnNavi
         navigationView = findViewById(R.id.nav_view);
         textView = findViewById(R.id.textView);
         toolbar = findViewById(R.id.toolbar);
+        // Hide items
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.nav_student_info).setVisible(false);
 
         mCalendarView = (CalendarView) findViewById(R.id.calendarView);
 
@@ -84,20 +93,28 @@ public class Calendar extends AppCompatActivity implements NavigationView.OnNavi
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            Intent backtoadmin = new Intent(Calendar.this, MainActivity.class);
+            startActivity(backtoadmin);
+            finish();
         }
 
 
     }
 
+
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
+
+
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
-                Intent home = new Intent(Calendar.this, MainActivity.class);
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                Intent home = new Intent(Calendar.this, Admin.class);
+                startActivity(new Intent(getApplicationContext(), Admin.class));
                 finish();
                 break;
+
 
             case R.id.nav_logout:
                 Intent logout = new Intent(Calendar.this, Login.class);
@@ -108,15 +125,10 @@ public class Calendar extends AppCompatActivity implements NavigationView.OnNavi
 
 
 
-            case R.id.nav_user_profile:
-                Intent studentProfile = new Intent(Calendar.this,StudentProfile.class);
-                startActivity(new Intent(getApplicationContext(), StudentProfile.class));
-                finish();
-                break;
 
             case R.id.nav_student_info:
-                Intent studentInfo = new Intent(Calendar.this,StudentInfo.class);
-                startActivity(new Intent(getApplicationContext(), StudentInfo.class));
+                Intent studentRegistration = new Intent(Calendar.this,GradingActivity.class);
+                startActivity(new Intent(getApplicationContext(), GradingActivity.class));
                 finish();
                 break;
 

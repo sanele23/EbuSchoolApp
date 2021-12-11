@@ -1,34 +1,69 @@
 package com.example.ebuschoolapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.UUID;
 
-public class GradingActivity extends AppCompatActivity {
+public class GradingActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private EditText mTitle , mDesc;
     private Button mSaveBtn, mShowBtn;
     private FirebaseFirestore db;
     private String uTitle, uDesc , uId;
 
+    // Variables
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
+    TextView textView;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grading);
+        //Change Status Bar Color
+        getWindow().setStatusBarColor(ContextCompat.getColor(GradingActivity.this, R.color.background_header_color));
+
+
+        //Hooks
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        textView = findViewById(R.id.textView);
+        toolbar = findViewById(R.id.toolbar);
+
+
+        // Hide items
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.nav_user_profile).setVisible(false);
+        // User Profile Click Activity from Home page to Student Info Activity
 
         mTitle = findViewById(R.id.edit_text);
         mDesc = findViewById(R.id.edit_desc);
@@ -75,6 +110,79 @@ public class GradingActivity extends AppCompatActivity {
 
             }
         });
+        //ToolBar
+        setSupportActionBar(toolbar);
+
+
+        //Navigation Drawer Menu
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.nav_home);
+    }
+
+    // Make Menu Return
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+            Intent backtoadmin = new Intent(GradingActivity.this, Admin.class);
+            startActivity(backtoadmin);
+            finish();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        switch (menuItem.getItemId()) {
+            case R.id.nav_home:
+                Intent home = new Intent(GradingActivity.this, Admin.class);
+                startActivity(new Intent(getApplicationContext(), Admin.class));
+                finish();
+                break;
+
+            case R.id.nav_logout:
+                Intent login = new Intent(GradingActivity.this, Login.class);
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), Login.class));
+                finish();
+                break;
+
+            case R.id.nav_student_info:
+                Intent studentInfo = new Intent(GradingActivity.this, GradingActivity.class);
+                startActivity(new Intent(getApplicationContext(), GradingActivity.class));
+                finish();
+                break;
+
+
+            case R.id.nav_calendar:
+                Intent calendar = new Intent(GradingActivity.this, Calendar_Admin.class);
+                startActivity(new Intent(getApplicationContext(), Calendar.class));
+                finish();
+                break;
+
+            case R.id.nav_resetUserPassword:
+                Intent reset= new Intent (GradingActivity.this,ResetPassword_Admin.class);
+                startActivity(new Intent(getApplicationContext(), ResetPassword.class));
+                finish();
+                break;
+
+
+        }
+
+
+        // reset password event listener (on the menu options)
+        if (menuItem.getItemId() == R.id.nav_resetUserPassword) {
+            startActivity(new Intent(getApplicationContext(), ResetPassword_Admin.class));
+        }
+
+        return super.onOptionsItemSelected(menuItem);
     }
 
     private void updateToFireStore(String id , String title , String desc){
@@ -124,4 +232,6 @@ public class GradingActivity extends AppCompatActivity {
         }else
             Toast.makeText(this, "Empty Fields not Allowed", Toast.LENGTH_SHORT).show();
     }
+
+
 }

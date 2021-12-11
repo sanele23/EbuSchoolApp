@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         textView = findViewById(R.id.textView);
         toolbar = findViewById(R.id.toolbar);
 
+
+        // Hide items
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.nav_student_info).setVisible(false);
         // User Profile Click Activity from Home page to Student Info Activity
 
         ImageView StudentInfo = findViewById(R.id.profile_img);
@@ -59,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         StudentInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), StudentInfo.class));
+                startActivity(new Intent(getApplicationContext(), MyAdapter.MyViewHolder.class));
                 finish();
             }
         });
@@ -77,15 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Student Profile Click Activity from Home page to StudentProfile (
         // Only for test is using the courses icon then I will change it to the profile Icon when administrators profile are ready)
 
-        ImageView StudentProfile = findViewById(R.id.course_main_img);
 
-        StudentProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), StudentProfile.class));
-                finish();
-            }
-        });
 
 
         Calendar.setOnClickListener(new View.OnClickListener() {
@@ -119,8 +115,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        }
+        else {
+            //super.onBackPressed();
         }
     }
 
@@ -141,15 +138,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 finish();
                 break;
 
-            case R.id.nav_student_info:
-                Intent studentInfo = new Intent(MainActivity.this, StudentInfo.class);
-                startActivity(new Intent(getApplicationContext(), StudentInfo.class));
-                finish();
-                break;
 
             case R.id.nav_user_profile:
-                Intent studentProfile = new Intent(MainActivity.this, StudentProfile.class);
-                startActivity(new Intent(getApplicationContext(), StudentProfile.class));
+                Intent studentProfile = new Intent(MainActivity.this,  MyAdapter.MyViewHolder.class);
+                startActivity(new Intent(getApplicationContext(),  MyAdapter.MyViewHolder.class));
                 finish();
                 break;
 
