@@ -23,7 +23,6 @@
         app:itemIconSize="32dp"
         app:itemIconTint="@color/background_header_color"
         app:itemTextColor="#13248F"
-        app:menu="@menu/main_menu"
         android:layout_gravity="start">
 
     </com.google.android.material.navigation.NavigationView>
@@ -32,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
+       <!-- <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -42,7 +41,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints" />-->
 
 
         <ImageView
