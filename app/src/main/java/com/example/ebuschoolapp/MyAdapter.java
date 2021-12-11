@@ -27,11 +27,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private List<Model> mList;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    // Variables
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    Toolbar toolbar;
-    TextView textView;
+
 
     public MyAdapter(ShowActivity activity , List<Model> mList){
         this.activity = activity;
