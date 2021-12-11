@@ -82,6 +82,11 @@ public class Calendar extends AppCompatActivity implements NavigationView.OnNavi
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
+        navigationView.setCheckedItem(R.id.nav_logout);
+        navigationView.setCheckedItem(R.id.nav_user_profile);
+        navigationView.setCheckedItem(R.id.nav_calendar);
+        navigationView.setCheckedItem(R.id.nav_resetUserPassword);
+
 
 
     }
@@ -93,8 +98,8 @@ public class Calendar extends AppCompatActivity implements NavigationView.OnNavi
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-            Intent backtoadmin = new Intent(Calendar.this, MainActivity.class);
-            startActivity(backtoadmin);
+            Intent backToMain = new Intent(Calendar.this, MainActivity.class);
+            startActivity(backToMain);
             finish();
         }
 
@@ -110,8 +115,8 @@ public class Calendar extends AppCompatActivity implements NavigationView.OnNavi
 
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
-                Intent home = new Intent(Calendar.this, Admin.class);
-                startActivity(new Intent(getApplicationContext(), Admin.class));
+                Intent home = new Intent(Calendar.this, MainActivity.class);
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
                 break;
 
@@ -125,10 +130,9 @@ public class Calendar extends AppCompatActivity implements NavigationView.OnNavi
 
 
 
-
-            case R.id.nav_student_info:
-                Intent studentRegistration = new Intent(Calendar.this,GradingActivity.class);
-                startActivity(new Intent(getApplicationContext(), GradingActivity.class));
+            case R.id.nav_user_profile:
+                Intent studentProfile = new Intent(Calendar.this,  UserProfile.class);
+                startActivity(new Intent(getApplicationContext(),   UserProfile.class));
                 finish();
                 break;
 

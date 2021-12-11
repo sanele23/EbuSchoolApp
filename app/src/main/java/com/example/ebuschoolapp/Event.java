@@ -97,6 +97,10 @@ public class Event extends AppCompatActivity implements NavigationView.OnNavigat
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
+        navigationView.setCheckedItem(R.id.nav_logout);
+        navigationView.setCheckedItem(R.id.nav_user_profile);
+        navigationView.setCheckedItem(R.id.nav_calendar);
+        navigationView.setCheckedItem(R.id.nav_resetUserPassword);
 
     }
     // Make Menu Return
@@ -130,16 +134,11 @@ public class Event extends AppCompatActivity implements NavigationView.OnNavigat
 
 
             case R.id.nav_user_profile:
-                Intent studentProfile = new Intent(Event.this,MyAdapter.MyViewHolder.class);
-                startActivity(new Intent(getApplicationContext(), MyAdapter.MyViewHolder.class));
+                Intent studentProfile = new Intent(Event.this,  UserProfile.class);
+                startActivity(new Intent(getApplicationContext(),   UserProfile.class));
                 finish();
                 break;
 
-            case R.id.nav_student_info:
-                Intent studentRegistration = new Intent(Event.this,GradingActivity.class);
-                startActivity(new Intent(getApplicationContext(), GradingActivity.class));
-                finish();
-                break;
 
             case R.id.nav_calendar:
                 Intent calendar = new Intent(Event.this, Calendar.class);

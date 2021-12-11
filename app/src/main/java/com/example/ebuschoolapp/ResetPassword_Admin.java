@@ -52,9 +52,7 @@ public class ResetPassword_Admin extends AppCompatActivity implements Navigation
         navigationView = findViewById(R.id.nav_view);
         textView = findViewById(R.id.textView);
         toolbar = findViewById(R.id.toolbar);
-        // Hide items
-        Menu menu = navigationView.getMenu();
-        menu.findItem(R.id.nav_user_profile).setVisible(false);
+
 
         // Extract data after user data
         userPassword = findViewById(R.id.newUserPassword);
@@ -114,7 +112,11 @@ public class ResetPassword_Admin extends AppCompatActivity implements Navigation
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
-
+        navigationView.setCheckedItem(R.id.nav_logout);
+        navigationView.setCheckedItem(R.id.nav_student_info);
+        navigationView.setCheckedItem(R.id.nav_calendar);
+        navigationView.setCheckedItem(R.id.nav_resetUserPassword);
+        navigationView.setCheckedItem(R.id.nav_user_profile);
     }
 
 
@@ -125,8 +127,8 @@ public class ResetPassword_Admin extends AppCompatActivity implements Navigation
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-            Intent backtomain = new Intent(ResetPassword_Admin.this, Admin.class);
-            startActivity(backtomain);
+            Intent backToAdmin = new Intent(ResetPassword_Admin.this, Admin.class);
+            startActivity(backToAdmin);
             finish();
         }
 
@@ -149,13 +151,12 @@ public class ResetPassword_Admin extends AppCompatActivity implements Navigation
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
                 break;
-
-
             case R.id.nav_user_profile:
-                Intent studentProfile = new Intent(ResetPassword_Admin.this, MyAdapter.MyViewHolder.class);
-                startActivity(new Intent(getApplicationContext(), MyAdapter.MyViewHolder.class));
+                Intent adminProfile= new Intent(ResetPassword_Admin.this, UserProfile_Admin.class);
+                startActivity(new Intent(getApplicationContext(), UserProfile_Admin.class));
                 finish();
                 break;
+
 
             case R.id.nav_student_info:
                 Intent studentRegistration = new Intent(ResetPassword_Admin.this, GradingActivity.class);

@@ -60,9 +60,7 @@ public class GradingActivity extends AppCompatActivity implements NavigationView
         toolbar = findViewById(R.id.toolbar);
 
 
-        // Hide items
-        Menu menu = navigationView.getMenu();
-        menu.findItem(R.id.nav_user_profile).setVisible(false);
+
         // User Profile Click Activity from Home page to Student Info Activity
 
         mTitle = findViewById(R.id.edit_text);
@@ -122,7 +120,13 @@ public class GradingActivity extends AppCompatActivity implements NavigationView
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
+        navigationView.setCheckedItem(R.id.nav_logout);
+        navigationView.setCheckedItem(R.id.nav_student_info);
+        navigationView.setCheckedItem(R.id.nav_calendar);
+        navigationView.setCheckedItem(R.id.nav_resetUserPassword);
+        navigationView.setCheckedItem(R.id.nav_user_profile);
     }
+
 
     // Make Menu Return
     @Override
@@ -160,16 +164,22 @@ public class GradingActivity extends AppCompatActivity implements NavigationView
                 finish();
                 break;
 
+            case R.id.nav_user_profile:
+                Intent adminProfile= new Intent(GradingActivity.this, UserProfile_Admin.class);
+                startActivity(new Intent(getApplicationContext(), UserProfile_Admin.class));
+                finish();
+                break;
+
 
             case R.id.nav_calendar:
                 Intent calendar = new Intent(GradingActivity.this, Calendar_Admin.class);
-                startActivity(new Intent(getApplicationContext(), Calendar.class));
+                startActivity(new Intent(getApplicationContext(), Calendar_Admin.class));
                 finish();
                 break;
 
             case R.id.nav_resetUserPassword:
                 Intent reset= new Intent (GradingActivity.this,ResetPassword_Admin.class);
-                startActivity(new Intent(getApplicationContext(), ResetPassword.class));
+                startActivity(new Intent(getApplicationContext(), ResetPassword_Admin.class));
                 finish();
                 break;
 

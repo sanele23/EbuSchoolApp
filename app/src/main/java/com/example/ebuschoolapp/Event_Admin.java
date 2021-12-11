@@ -51,9 +51,7 @@ public class Event_Admin extends AppCompatActivity implements NavigationView.OnN
         textView =findViewById(R.id.textView);
         toolbar = findViewById(R.id.toolbar);
 
-        // Hide items
-        Menu menu = navigationView.getMenu();
-        menu.findItem(R.id.nav_user_profile).setVisible(false);
+
 
 
         title = findViewById(R.id.etTitle);
@@ -98,6 +96,11 @@ public class Event_Admin extends AppCompatActivity implements NavigationView.OnN
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
+        navigationView.setCheckedItem(R.id.nav_logout);
+        navigationView.setCheckedItem(R.id.nav_student_info);
+        navigationView.setCheckedItem(R.id.nav_calendar);
+        navigationView.setCheckedItem(R.id.nav_resetUserPassword);
+        navigationView.setCheckedItem(R.id.nav_user_profile);
 
     }
     // Make Menu Return
@@ -129,7 +132,11 @@ public class Event_Admin extends AppCompatActivity implements NavigationView.OnN
                 finish();
                 break;
 
-
+            case R.id.nav_user_profile:
+                Intent adminProfile= new Intent(Event_Admin.this, UserProfile_Admin.class);
+                startActivity(new Intent(getApplicationContext(), UserProfile_Admin.class));
+                finish();
+                break;
             case R.id.nav_student_info:
                 Intent studentRegistration = new Intent(Event_Admin.this,GradingActivity.class);
                 startActivity(new Intent(getApplicationContext(), GradingActivity.class));

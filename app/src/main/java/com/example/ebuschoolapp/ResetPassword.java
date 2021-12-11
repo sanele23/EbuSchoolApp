@@ -119,6 +119,10 @@ public class ResetPassword extends AppCompatActivity implements NavigationView.O
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
+        navigationView.setCheckedItem(R.id.nav_logout);
+        navigationView.setCheckedItem(R.id.nav_user_profile);
+        navigationView.setCheckedItem(R.id.nav_calendar);
+        navigationView.setCheckedItem(R.id.nav_resetUserPassword);
 
     }
 
@@ -159,8 +163,8 @@ public class ResetPassword extends AppCompatActivity implements NavigationView.O
 
 
             case R.id.nav_user_profile:
-                Intent studentProfile = new Intent(ResetPassword.this,MyAdapter.MyViewHolder.class);
-                startActivity(new Intent(getApplicationContext(), MyAdapter.MyViewHolder.class));
+                Intent studentProfile = new Intent(ResetPassword.this,UserProfile.class);
+                startActivity(new Intent(getApplicationContext(),UserProfile.class));
                 finish();
                 break;
 
@@ -182,25 +186,6 @@ public class ResetPassword extends AppCompatActivity implements NavigationView.O
 
         return true;
     }
-
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                finish();
-//                return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-    //}
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // handle arrow click here
-//        if (item.getItemId() == android.R.id.home) {
-//            finish(); // close this activity and return to preview activity (if there is any)
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
 
 }

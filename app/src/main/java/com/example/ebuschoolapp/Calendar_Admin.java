@@ -52,9 +52,7 @@ public class Calendar_Admin extends AppCompatActivity implements NavigationView.
         textView = findViewById(R.id.textView);
         toolbar = findViewById(R.id.toolbar);
 
-        // Hide items
-        Menu menu = navigationView.getMenu();
-        menu.findItem(R.id.nav_user_profile).setVisible(false);
+
 
         mCalendarView = (CalendarView) findViewById(R.id.calendarView);
 
@@ -78,7 +76,11 @@ public class Calendar_Admin extends AppCompatActivity implements NavigationView.
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
-
+        navigationView.setCheckedItem(R.id.nav_logout);
+        navigationView.setCheckedItem(R.id.nav_student_info);
+        navigationView.setCheckedItem(R.id.nav_calendar);
+        navigationView.setCheckedItem(R.id.nav_resetUserPassword);
+        navigationView.setCheckedItem(R.id.nav_user_profile);
 
     }
 
@@ -119,7 +121,11 @@ public class Calendar_Admin extends AppCompatActivity implements NavigationView.
                 finish();
                 break;
 
-
+            case R.id.nav_user_profile:
+                Intent adminProfile= new Intent(Calendar_Admin.this, UserProfile_Admin.class);
+                startActivity(new Intent(getApplicationContext(), UserProfile_Admin.class));
+                finish();
+                break;
 
             case R.id.nav_student_info:
                 Intent studentRegistration = new Intent(Calendar_Admin.this,GradingActivity.class);

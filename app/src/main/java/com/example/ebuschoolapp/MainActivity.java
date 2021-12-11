@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         StudentInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), MyAdapter.MyViewHolder.class));
+                startActivity(new Intent(getApplicationContext(), UserProfile.class));
                 finish();
             }
         });
@@ -105,6 +105,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
+        navigationView.setCheckedItem(R.id.nav_logout);
+        navigationView.setCheckedItem(R.id.nav_user_profile);
+        navigationView.setCheckedItem(R.id.nav_calendar);
+        navigationView.setCheckedItem(R.id.nav_resetUserPassword);
 
 
     }
@@ -117,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else {
-            //super.onBackPressed();
+            super.onBackPressed();
         }
     }
 
@@ -140,8 +144,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
             case R.id.nav_user_profile:
-                Intent studentProfile = new Intent(MainActivity.this,  MyAdapter.MyViewHolder.class);
-                startActivity(new Intent(getApplicationContext(),  MyAdapter.MyViewHolder.class));
+                Intent studentProfile = new Intent(MainActivity.this,  UserProfile.class);
+                startActivity(new Intent(getApplicationContext(),   UserProfile.class));
                 finish();
                 break;
 

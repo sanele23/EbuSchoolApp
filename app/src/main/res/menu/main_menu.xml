@@ -28,7 +28,8 @@
 
             android:enabled="true"
             android:title="@string/menu_profile"
-            android:visible="true">
+            android:visible="true"
+            android:icon="@null">
 
             <menu>
                 <group android:checkableBehavior="single">

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserProfile"
+    tools:context=".UserProfile_Admin"
     android:id="@+id/drawer_layout"
     android:background="@drawable/orange_background"
     android:foregroundTint="#FFFFFF"
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-medium"
-            android:text=" Your Profile"
+            android:text="Profile"
             android:textColor="#FFFFFF"
             android:textSize="22dp"
             android:textStyle="normal"
@@ -166,6 +166,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
             tools:ignore="TextContrastCheck" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
