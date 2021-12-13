@@ -198,13 +198,13 @@ tools:openDrawer="start">
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:buttonTint="@color/background_header_color"
-        android:minHeight="48dp"
+        android:minHeight="44dp"
         android:text="Teacher"
         android:textColor="#636161"
         android:textSize="18dp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintHorizontal_bias="0.755"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AskProfile"
         tools:ignore="MissingConstraints" />
@@ -222,7 +222,8 @@ tools:openDrawer="start">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/registerPhone"
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/gotoLogin"
@@ -233,8 +234,8 @@ tools:openDrawer="start">
         android:layout_marginEnd="16dp"
         android:background="@color/background_header_color"
         android:text="Back to Login"
-        android:textColor="#4E342E"
-
+        android:textColor="#FFFFFF"
+        tools:ignore="TextContrastCheck"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
